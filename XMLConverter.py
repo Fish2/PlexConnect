@@ -1286,6 +1286,9 @@ class CCommandCollection(CCommandHelper):
     def ATTRIB_durationToString(self, src, srcXML, param):
         type, leftover, dfltd = self.getKey(src, srcXML, param)
         duration, leftover, dfltd = self.getKey(src, srcXML, leftover)
+        if duration == "":
+            return ""
+        
         if type == 'Video':
             min = int(duration)/1000/60
             if g_ATVSettings.getSetting(self.ATV_udid, 'durationformat') == 'Minutes':

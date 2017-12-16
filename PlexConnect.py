@@ -165,7 +165,7 @@ def cmdShutdown():
     running = False
     # send shutdown to all pipes
     for slave in pipes:
-        pipes[slave].send('shutdown')
+        pipes[slave].send('Shutdown')
     dprint('PlexConnect', 0, "Shutting down.")
 
 

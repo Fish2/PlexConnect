@@ -39,6 +39,14 @@ def getIP_self():
     return IP
 
 
+def getIP_self_external(IP_self):
+    cfg = param['CSettings']
+    IP = cfg.getSetting('ip_plexconnect_external')
+    if IP:
+        dprint('PlexConnect', 0, "IP_self_external: "+IP)
+        return IP
+    else:
+        return IP_self
 
 # initializer for Manager, proxy-ing ATVSettings to WebServer/XMLConverter
 def initProxy():
@@ -80,6 +88,7 @@ def startup():
     
     # more Settings
     param['IP_self'] = getIP_self()
+    param['IP_self_external'] = getIP_self_external(param['IP_self'])
     param['HostToIntercept'] = cfg.getSetting('hosttointercept')
     param['baseURL'] = 'http://'+ param['HostToIntercept']
     

@@ -318,6 +318,7 @@ def Run(cmdPipe, param):
     dinit(__name__, param)  # init logging, DNSServer process
     
     cfg_IP_self = param['IP_self']
+    cfg_IP_self_external = param['IP_self_external']
     cfg_Port_DNSServer = param['CSettings'].getSetting('port_dnsserver')
     cfg_IP_DNSMaster = param['CSettings'].getSetting('ip_dnsmaster')
     
@@ -340,6 +341,7 @@ def Run(cmdPipe, param):
     dprint(__name__, 0, "***")
     dprint(__name__, 0, "DNSServer: Serving DNS on {0} port {1}.", cfg_IP_self, cfg_Port_DNSServer)
     dprint(__name__, 1, "intercept: {0} => {1}", intercept, cfg_IP_self)
+    dprint(__name__, 1, "intercept: {0} => {1}", intercept, cfg_IP_self_external)
     dprint(__name__, 1, "restrain: {0} => 127.0.0.1", restrain)
     dprint(__name__, 1, "forward other to higher level DNS: "+cfg_IP_DNSMaster)
     dprint(__name__, 0, "***")
@@ -380,9 +382,10 @@ def Run(cmdPipe, param):
                     paket+=data[12:]                                     # original query
                     paket+='\xc0\x0c'                                    # pointer to domain name/original query
                     paket+='\x00\x01\x00\x01\x00\x00\x00\x3c\x00\x04'    # response type, ttl and resource data length -> 4 bytes
-                    paket+=str.join('',map(lambda x: chr(int(x)), cfg_IP_self.split('.'))) # 4bytes of IP
-                    dprint(__name__, 1, "-> DNS response: "+cfg_IP_self)
-                
+                    paket+=str.join('',map(lambda x: chr(int(x)), cfg_IP_self_external.split('.'))) # 4bytes of IP
+                    dprint(__name__, 1, "-> DNS response: "+cfg_IP_self_external)
+
+
                 elif domain in restrain:
                     dprint(__name__, 1, "***restrain request")
                     paket+=data[:2]         # 0:1 - ID
@@ -395,8 +398,8 @@ def Run(cmdPipe, param):
                     paket+='\xc0\x0c'                                    # pointer to domain name/original query
                     paket+='\x00\x01\x00\x01\x00\x00\x00\x3c\x00\x04'    # response type, ttl and resource data length -> 4 bytes
                     paket+='\x7f\x00\x00\x01'  # 4bytes of IP - 127.0.0.1, loopback
-                    dprint(__name__, 1, "-> DNS response: "+cfg_IP_self)
-                
+                    dprint(__name__, 1, "-> DNS response: "+cfg_IP_self_external)
+
                 else:
                     dprint(__name__, 1, "***forward request")
                     

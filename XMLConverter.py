@@ -1084,7 +1084,7 @@ class CCommandCollection(CCommandHelper):
                 Media.get('audioCodec','-') in ("mp3", "aac", "ac3", "drms") and \
                 int(Media.get('bitrate','0')) <= int(maxAudioBitrateCompressed) \
                 or \
-                Media.get('audioCodec','-') in ("alac", "aiff", "wav")
+                Media.get('audioCodec','-') in ("flac", "alac", "aiff", "wav")
             # check Media.get('container') as well - mp3, m4a, ...?
             
             dprint(__name__, 2, "audio: ATVNative - {0}", audioATVNative)

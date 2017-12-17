@@ -16,6 +16,26 @@
         <sections>
           <menuSection>
             <items>{{VAR(ChanVer:Video/Media/Part/key:V1:=V2)}}  <!--V1 does not have Video/Media/...-->
+
+              <!-- channel directories -->
+              <twoLineEnhancedMenuItem id="{{VAL(key)}}"
+                                       onPlay="atv.loadURL('{{URL(key:::PlexConnect=Channels_Video)}}')"
+                                       onSelect="atv.loadURL('{{URL(key:::PlexConnect=Channels_Video)}}')">
+                {{COPY(Directory:search:COPY:=COPY|1=)}}
+                <label>{{VAL(title)}}</label>
+                <!--
+                <rightLabel>another 100 files...</rightLabel>
+                -->
+                <image>{{IMAGEURL(thumb::384)}}</image>
+                <!--<image>http://trailers.apple.com/thumbnails/DirectoryLink.jpg</image>-->
+                <!--<defaultImage>resource://Poster.png</defaultImage>-->
+                <preview>
+                  <crossFadePreview>
+                    <image>{{IMAGEURL(thumb::768)}}</image>
+                  </crossFadePreview>
+                </preview>
+              </twoLineEnhancedMenuItem>
+
               <!-- channel media V1: no PrePlayScreen, no "in video" additional information-->
               <twoLineEnhancedMenuItem id="{{VAL(key)}}"
                                        onPlay="atv.loadURL('{{URL(key:::PlexConnect=PlayVideoChannelsV1)}}')"
@@ -49,26 +69,7 @@
                   </keyedPreview>
                 </preview>
               </twoLineEnhancedMenuItem>
-              
-              <!-- channel directories -->
-              <twoLineEnhancedMenuItem id="{{VAL(key)}}" 
-                                       onPlay="atv.loadURL('{{URL(key:::PlexConnect=Channels_Video)}}')" 
-                                       onSelect="atv.loadURL('{{URL(key:::PlexConnect=Channels_Video)}}')">
-                {{COPY(Directory:search:COPY:=COPY|1=)}}
-                <label>{{VAL(title)}}</label>
-                <!--
-                <rightLabel>another 100 files...</rightLabel>
-                -->
-                <image>{{IMAGEURL(thumb::384)}}</image>
-                <!--<image>http://trailers.apple.com/thumbnails/DirectoryLink.jpg</image>-->
-                <!--<defaultImage>resource://Poster.png</defaultImage>-->
-                <preview>
-                  <crossFadePreview>
-                    <image>{{IMAGEURL(thumb::768)}}</image>
-                  </crossFadePreview>
-                </preview>
-              </twoLineEnhancedMenuItem>
-              
+
               <!-- channel search item -->
               <twoLineEnhancedMenuItem id="{{VAL(key)}}" 
                                        onPlay="atv.loadURL('{{URL(key:::PlexConnect=Channels_Search&amp;PlexConnectSearchKey={{VAL_QUOTED(key)}})}}')"

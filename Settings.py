@@ -13,8 +13,8 @@ from Debug import *  # dprint()
 Global Settings...
 syntax: 'setting': ('default', 'regex to validate')
 
-PMS: plexgdm, ip_pms, port_pms
 DNS: ip_dnsmaster - IP of Router, ISP's DNS, ... [dflt: google public DNS]
+PMS: plexgdm, ip_pms: accepts hostnames as well as ips, port_pms
 IP_self: enable_plexconnect_autodetect, ip_plexconnect - manual override for VPN usage
 Intercept: Trailers-trailers.apple.com, WSJ-secure.marketwatch.com, iMovie-www.icloud.com
 HTTP: port_webserver - override when using webserver + forwarding to PlexConnect

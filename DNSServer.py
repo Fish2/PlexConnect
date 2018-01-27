@@ -341,7 +341,9 @@ def Run(cmdPipe, param):
     dprint(__name__, 0, "***")
     dprint(__name__, 0, "DNSServer: Serving DNS on {0} port {1}.", cfg_IP_self, cfg_Port_DNSServer)
     dprint(__name__, 1, "intercept: {0} => {1}", intercept, cfg_IP_self)
-    dprint(__name__, 1, "intercept: {0} => {1}", intercept, cfg_IP_self_external)
+    if not param['CSettings'].getSetting('ip_plexconnect_external')=='0.0.0.0':
+        dprint(__name__, 1, "External IP")
+        dprint(__name__, 1, "intercept: {0} => {1}", intercept, cfg_IP_self_external)
     dprint(__name__, 1, "restrain: {0} => 127.0.0.1", restrain)
     dprint(__name__, 1, "forward other to higher level DNS: "+cfg_IP_DNSMaster)
     dprint(__name__, 0, "***")

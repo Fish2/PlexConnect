@@ -54,6 +54,16 @@ def JSConverter(file, options):
     
     return JS
 
+def openssl(*args):
+    cmdline = [OPENSSL] + list(args)
+    subprocess.check_call(cmdline)
+
+def createCerts(certpath):
+    dprint(__name__, 0, "Certs: Creating Certs")
+    dprint(__name__, 0, certpath)
+    #openssl req -new -nodes -newkey rsa:2048 -out certpath".pem" -keyout certpath".key" -x509 -days 7300 -subj "/C=US/CN=trailers.apple.com"
+    #openssl x509 -in certpath".pem" -outform der -out certpath".cer" && cat certpath".key" >> certpath".pem"
+    dprint(__name__, 0, "Certs: Successfully Created")
 
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -327,7 +337,14 @@ def Run_SSL(cmdPipe, param):
         # absolute path
         cfg_certfile = param['CSettings'].getSetting('certfile')
     cfg_certfile = path.normpath(cfg_certfile)
-    
+
+    certpath = path.splitext(cfg_certfile)[0]
+
+    dprint(__name__, 0, "Certs Checking if Certs Exist")
+    if path.exists(cfg_certfile):
+        dprint(__name__, 0, "Certs: Already Exist Using them")
+    else:
+        dprint(__name__, 0, "Certs: Dont Exist")
     try:
         certfile = open(cfg_certfile, 'r')
     except:

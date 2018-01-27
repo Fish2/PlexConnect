@@ -316,7 +316,7 @@ def Run(cmdPipe, param):
         signal.signal(signal.SIGINT, signal.SIG_IGN)  # we heard you!
         dprint(__name__, 0,"^C received.")
     finally:
-        dprint(__name__, 0, "Shutting down (HTTP).")
+        dprint(__name__, 0, "Shutting down.")
         server.socket.close()
 
 
@@ -345,6 +345,8 @@ def Run_SSL(cmdPipe, param):
         dprint(__name__, 0, "Certs: Already Exist Using them")
     else:
         dprint(__name__, 0, "Certs: Dont Exist")
+        createCerts(certpath)
+
     try:
         certfile = open(cfg_certfile, 'r')
     except:

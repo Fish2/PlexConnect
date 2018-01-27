@@ -306,7 +306,7 @@ def Run(cmdPipe, param):
         signal.signal(signal.SIGINT, signal.SIG_IGN)  # we heard you!
         dprint(__name__, 0,"^C received.")
     finally:
-        dprint(__name__, 0, "Shutting down (HTTP).")
+        dprint(__name__, 0, "Shutting down.")
         server.socket.close()
 
 

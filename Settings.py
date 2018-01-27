@@ -43,7 +43,7 @@ g_settings = [
     ('port_ssl'        , ('443', '[0-9]{1,5}')),
     ('certfile'        , ('./assets/certificates/trailers.pem', '.+.pem')),
     \
-    ('allow_gzip_atv'              , ('False', '((True)|(False))')),
+    ('allow_gzip_atv'              , ('True', '((True)|(False))')),
     ('allow_gzip_pmslocal'         , ('False', '((True)|(False))')),
     ('allow_gzip_pmsremote'        , ('True', '((True)|(False))')),
     \

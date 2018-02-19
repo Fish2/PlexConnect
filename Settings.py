@@ -20,6 +20,7 @@ Intercept: Trailers-trailers.apple.com, WSJ-secure.marketwatch.com, iMovie-www.i
 HTTP: port_webserver - override when using webserver + forwarding to PlexConnect
 HTTPS: port_ssl, certfile, enable_webserver_ssl - configure SSL portion or webserver
 intercept_atv_icon: changes atv icon to plex icon
+enable_js_minify: uses minify js files
 """
 g_settings = [
     ('enable_plexgdm'  , ('True', '((True)|(False))')),
@@ -43,6 +44,7 @@ g_settings = [
     ('port_ssl'        , ('443', '[0-9]{1,5}')),
     ('certfile'        , ('./assets/certificates/trailers.pem', '.+.pem')),
     \
+    ('enable_js_minify'            , ('False', '((True)|(False))')),
     ('allow_gzip_atv'              , ('False', '((True)|(False))')),
     ('allow_gzip_pmslocal'         , ('False', '((True)|(False))')),
     ('allow_gzip_pmsremote'        , ('True', '((True)|(False))')),

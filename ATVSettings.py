@@ -24,6 +24,7 @@ options = { \
     'seasonview'                :('List', 'Coverflow'), \
     'durationformat'            :('Hours/Minutes', 'Minutes'), \
     'postertitles'              :('Highlighted Only', 'Show All'), \
+    'ondeck_hide_watched'       :('Show', 'Hide'), \
     'fanart'                    :('Hide', 'Show'), \
     'fanart_blur'               :('0', '5', '10', '15', '20'), \
     'allowdeletion'             :('No', 'Yes'), \

@@ -1,11 +1,15 @@
 
-*.pyc
+.DS_Store
 
 /ATVSettings.cfg
 
 /Settings.cfg
 
+/assets/fanartcache/*.jpg
+
 PlexConnect.log
+
+*.pyc
 
 *.cer
 
@@ -20,5 +24,3 @@ PlexConnect.log
 *.sln
 
 *.suo
-
-/assets/fanartcache/*.jpg

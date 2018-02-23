@@ -22,6 +22,7 @@
                                        onSelect="atv.loadURL('{{URL(key:::PlexConnect=PlayVideoChannelsV1)}}')">
                 {{COPY(Video:#ChanVer::V1=COPY|V2=)}}
                 <label>{{VAL(title)}}</label>
+                <label2>{{VAL(tagline)}}</label2>
                 <image>{{IMAGEURL(thumb::384)}}</image>
                 <!--<defaultImage>resource://Poster.png</defaultImage>-->
                 <preview>
@@ -44,6 +45,7 @@
                 <preview>
                   <keyedPreview>
                     <title>{{VAL(title)}}</title>
+                    <label2>{{VAL(tagline)}}</label2>
                     <summary>{{VAL(summary)}}</summary>
                     <image>{{IMAGEURL(thumb::768)}}</image>
                   </keyedPreview>

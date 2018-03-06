@@ -1219,19 +1219,19 @@ class CCommandCollection(CCommandHelper):
             
             subtitleId = ''
             subtitleKey = ''
-            subtitleFormat = ''
+            subtitleCodec = ''
             for Stream in Media.find('Part').findall('Stream'):  # Todo: check 'Part' existance, deal with multi part video
                 if Stream.get('streamType','') == '3' and\
                    Stream.get('selected','0') == '1':
                     subtitleId = Stream.get('id','')
                     subtitleKey = Stream.get('key','')
-                    subtitleFormat = Stream.get('format','')
+                    subtitleCodec = Stream.get('codec','')
                     break
             
             subtitleIOSNative = \
-                subtitleKey=='' and subtitleFormat=="tx3g"  # embedded
+                subtitleKey=='' and (subtitleCodec=="mov_text" or subtitleCodec=="ttxt" or subtitleCodec=="tx3g" or subtitleCodec=="text")  # embedded
             subtitlePlexConnect = \
-                subtitleKey!='' and subtitleFormat=="srt"  # external
+                subtitleKey!='' and subtitleCodec=="srt"  # external
             
             # subtitle suitable for direct play?
             #    no subtitle

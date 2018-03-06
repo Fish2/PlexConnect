@@ -36,8 +36,7 @@ def getIP_self():
     else:
         # manual override from "settings.cfg"
         IP = cfg.getSetting('ip_plexconnect')
-        dprint('PlexConnect', 0, "IP_self (from settings): "+IP)
-    
+
     return IP
 
 

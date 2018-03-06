@@ -20,7 +20,7 @@ except ImportError:
 
 
 
-def generate(PMS_uuid, url, authtoken, resolution, blurRadius):
+def generate(PMS_uuid, url, authtoken, resolution, blurRadius, CSettings):
     cachepath = sys.path[0]+"/assets/fanartcache"
     stylepath = sys.path[0]+"/assets/thumbnails"
 
